@@ -25,6 +25,6 @@ def RandomPasswordGenerator(passLen=10):
 
     return gen_password
 
-# if __name__ == "__main__":
-#     print(RandomPasswordGenerator(20))
+if __name__ == "__main__":
+    print(RandomPasswordGenerator(20))
     

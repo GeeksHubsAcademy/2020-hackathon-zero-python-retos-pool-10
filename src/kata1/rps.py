@@ -49,6 +49,6 @@ def Game():
 
     print(winner)
 
-# if __name__ == "__main__":
-#     Game()
+if __name__ == "__main__":
+    Game()
 
