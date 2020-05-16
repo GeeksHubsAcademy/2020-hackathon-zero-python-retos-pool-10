@@ -13,12 +13,12 @@ logger = logging.getLogger(__name__)
 def start(update, context):
     """Envia un mensaje cuando se emita el comando /start."""
     update.message.reply_text("Hola, Geeks!")
-    return ""
+    return "Hola, Geeks!"
 
 def help(update, context):
     """Envia un mensaje cuando se emita el comando /help."""
     update.message.reply_text("Ayudame!")
-    return ""
+    return "Ayudame!"
 
 def mayus(update, context):
     result = []
@@ -70,5 +70,5 @@ def main():
     updater.idle()
 
 
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()
