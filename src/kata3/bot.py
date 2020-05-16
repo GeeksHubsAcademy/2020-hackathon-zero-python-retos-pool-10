@@ -35,11 +35,6 @@ def alreves(update, context):
     result = []
     user_message = update.message.text
     user_message = user_message.replace('/alreves ', '')[::-1]
-    # print(user_message)
-    # user_message = user_message.split(' ')
-    # tmp = user_message[1]
-    # final_res = tmp[::-1]
-    # final_res = ' '.join(user_message)[::-1]
     update.message.reply_text(user_message)
     return user_message
 
