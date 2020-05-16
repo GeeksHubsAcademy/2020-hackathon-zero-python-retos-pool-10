@@ -17,8 +17,9 @@ def start(update, context):
 
 def help(update, context):
     """Envia un mensaje cuando se emita el comando /help."""
-    update.message.reply_text("Ayudame!")
-    return "Ayudame!"
+    men = "Ayudame!"
+    update.message.reply_text(men)
+    return men
 
 def mayus(update, context):
     result = []
@@ -33,11 +34,14 @@ def alreves(update, context):
     """Repite el mensaje del usuario."""
     result = []
     user_message = update.message.text
-    user_message = user_message.split(' ')
-    user_message = user_message[1::]
-    final_res = ' '.join(user_message)[::-1]
-    update.message.reply_text(final_res)
-    return final_res
+    user_message = user_message.replace('/alreves ', '')[::-1]
+    # print(user_message)
+    # user_message = user_message.split(' ')
+    # tmp = user_message[1]
+    # final_res = tmp[::-1]
+    # final_res = ' '.join(user_message)[::-1]
+    update.message.reply_text(user_message)
+    return user_message
 
 def error(update, context):
     """Envia los errores por consola"""

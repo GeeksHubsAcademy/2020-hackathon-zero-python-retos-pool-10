@@ -24,7 +24,7 @@ def quienGana(player, ai):
         return 'Ganaste!'
     
     else:
-        return 'Perdiste'
+        return 'Perdiste!'
 
 
 # Entry Point
