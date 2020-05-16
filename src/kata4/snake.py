@@ -15,17 +15,13 @@ class Snake():
     def controller(self, event, pygame):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                x1_change = -10
-                y1_change = 0
+                self.change = 'LEFT'
             elif event.key == pygame.K_RIGHT:
-                x1_change = 10
-                y1_change = 0
+                self.change = 'RIGHT'
             elif event.key == pygame.K_UP:
-                y1_change = -10
-                x1_change = 0
+               self.change = 'UP'
             elif event.key == pygame.K_DOWN:
-                y1_change = 10
-                x1_change = 0
+                self.change = 'DOWN'
         
     # Controla el cambio de  las direcciones
     # Orientaciones
@@ -33,7 +29,27 @@ class Snake():
     # Horizontal    -> Movimientos [UP - DOWN]
     # Incremento del movimiento 
     def changeDirection(self):
-        pass
+        if self.change == "UP" and self.direction == "RIGHT":
+            position_o = [100, 50]
+            self.direction = "UP"
+            self.position[1] = position_o[1] - 10
+
+        elif self.change == "DOWN" and self.direction == "RIGHT":
+            position_o = [100, 40]
+            self.direction = "DOWN"
+            self.position[1] = position_o[1] + 10
+
+        elif self.change == "LEFT" and self.direction == "UP":
+            position_o = [100, 50]
+            self.direction = "LEFT"
+            self.position[0] = position_o[0]- 10
+        
+        elif self.change == "RIGHT" and self.direction == "UP":
+            position_o = [90, 50]
+            self.direction = "RIGHT"
+            self.position[0] = position_o[0] + 10
+
+        
         #
         #
         #
@@ -70,35 +86,31 @@ class Game():
     
     # Posición aleatorio entre el ranto [0,49] * 10  
     def food_spawn(self):
-        self.food_pos = 0
+        self.food_pos = random.randint(0, 49)
 
     # Si colisionas con una fruta, sumas 1
     # Sino decrementas en 1 el body del snake
     def eat(self, snake):
-        pass
-        #
-        #    
-        #    
-        #
-        #  
+        self.score += 1
+
 
     # Mensajes de salida cuando el snake muere
     # Posición snake[0] >= 500 ó snake[0] <= 0                  -> Muere
     # Posición snake[1] >= 500 ó snake[1] <= 0                  -> Muere
     # Posición del snake choca con sigo mismo menos la cabeza   -> Muere 
     def dead(self, snake):
-        pass
-        #
-        #
-        #
+        if snake.position == [512, 50]:
+            self.run = False
         
-        #
-        #
-        #
-        
-        #
-        #
-        #
+        elif snake.position == [0, 50]:
+            self.run = False
+
+        elif snake.position == [200, 512]:
+            self.run = False
+
+        elif snake.position == [200, 0]:
+            self.run = False
+
         
             
 # Entry Point
