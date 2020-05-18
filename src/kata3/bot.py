@@ -12,20 +12,31 @@ logger = logging.getLogger(__name__)
 # Definimos algunas funciones para los comandos. Estos generalmente toman los dos argumentos update y context
 def start(update, context):
     """Envia un mensaje cuando se emita el comando /start."""
-    return ""
+    update.message.reply_text("Hola, Geeks!")
+    return "Hola, Geeks!"
 
 def help(update, context):
     """Envia un mensaje cuando se emita el comando /help."""
-    return ""
+    men = "Ayudame!"
+    update.message.reply_text(men)
+    return men
 
 def mayus(update, context):
-        #
-        return ""
+    result = []
+    for word in context.args:
+        result.append(word.upper())
+
+    final_res = ' '.join(result)
+    update.message.reply_text(final_res)
+    return final_res
 
 def alreves(update, context):
     """Repite el mensaje del usuario."""
-    #
-    return ""
+    result = []
+    user_message = update.message.text
+    user_message = user_message.replace('/alreves ', '')[::-1]
+    update.message.reply_text(user_message)
+    return user_message
 
 def error(update, context):
     """Envia los errores por consola"""
@@ -34,21 +45,23 @@ def error(update, context):
 def main():
     """Inicio del Bot"""
     #Colocamos el Token creado por FatherBot
-    updater = Updater("", use_context=True)
+    updater = Updater("1266332022:AAEu-KvzfwlSbiiBN0-Jo1tNxkcu5w7xSWA", use_context=True)
 
     # Es el Registro de Comandos a través del dispartcher
-    dp = #
+    dp = []
 
     # Añadimos a la lista de Registro todos los comandos con su función [start - help - mayus]
-    #
-    #
-    #
+    updater.dispatcher.add_handler(CommandHandler('start', start))
+    updater.dispatcher.add_handler(CommandHandler('help', help))
+    updater.dispatcher.add_handler(CommandHandler('mayus', mayus))
+    updater.dispatcher.add_handler(CommandHandler('alreves', alreves))
+    
 
     # Este comando es un Trigger que se lanza cuando no hay comandos [alreves]
-    #
+    # 
     
     # Y este espera al error
-    dp.add_error_handler(error)
+    # dp.add_error_handler(error)
 
     # Lanzamos el Bot
     updater.start_polling()
